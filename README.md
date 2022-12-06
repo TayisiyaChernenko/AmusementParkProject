@@ -9,6 +9,7 @@ Also change the passowrd to your own lol
 Launching the Site
 
 To run, start the virtual environment with -> '. env/bin/activate' 
+Make a new env if necessary 
 Install dependencies with the command -> 'python3 -m pip install -r requirements.txt'
 Activate flask with export -> 'FLASK_APP=main.py'
 Run Flask to launch the website with -> 'flask run' 
