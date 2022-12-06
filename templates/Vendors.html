@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Amusement Park App</title>
+    </head>
+    <body style = "background-color:#f4f0ec">
+        <body >
+            <div style="background-color: whitesmoke;">
+            <h1>Vendors in the Amusement Park</h1>
+        </div>
+        </body>
+        <nav>
+            <ul>
+                <table>
+                <tr>
+                    <a href="/index">
+                    <button>Home</button>
+                </a>
+                </tr>
+                <tr>
+                    <a href="/Rides">
+                        <button>Rides</button>
+                    </a>
+                </tr> 
+                <tr>
+                    <a href="/Reservations">
+                        <button>Reservations</button>
+                    </a>
+                </tr>
+            </table>
+            </ul>
+        </nav>
+        <p style="margin-bottom:1.5cm;"></p>
+        <main>
+        
+            <div class="box">
+            <table>
+                <tr>
+                    <h2>Vendors</h2>
+                </tr>
+                {% for vendor in output%}
+                <tr>
+                    <details>
+                    <summary>{{vendor}}</summary>
+                    <!--This will display vendors somehow from database-->
+                    </details>
+                </tr>
+               {% endfor %} 
+            </details>
+        </table>
+        </div>
+        </main>
+        
+        <footer>
+        <div id="bottom">
+            <div class="borderbox">
+            <p>The vendors available at the park are subject to change, and supply of stock is not guaranteed. For refunds, cutsomers must 
+                present a proof of purchase in the form of a reciept of the same day.   </p>
+        </div>
+    </div>
+        </footer>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+    
+            body {
+                height: 100h;
+                width: 100vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-image: url("/static/pexels-athena-2977118.jpg");
+                background-size: cover;
+            }
+    
+            button{
+                background-color:red ;
+                color: white;
+            }
+    
+            .box {
+                width: 200px;
+                height: 350px;
+                border:1px solid red;
+                background-color:white;
+                box-shadow: 6px 10px 4px lightskyblue;
+            }
+    
+            .borderbox{
+                background-color: red;
+                color: white;
+                height: 50px;
+                width: 1450px;
+            }
+            
+    
+            #bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            }
+    
+    
+        </style>
+
+  </html>
