@@ -3,8 +3,8 @@ In Terminal (I use VS Code personally):
 
 Database
 If your database is named anything other than AMUSEMENT_PARK,
-rename the db variable in the Main mysqlconnect method  to that file name.
-Also change the passowrd to your own lol
+rename the db variable in the App file mysqlconnect method to that file name.
+Also change the passoword to your own lol
 
 Launching the Site
 
@@ -17,7 +17,7 @@ Click on the link or copy paste the provided URL
 
 Getting Database Queries to the Website
 
-Use the mysqlconnectmethod in Main to query the database
+Use the mysqlconnectmethod in App to query the database
 Use the output in the routing functions with said output 
 (the Vendors method does this if you need an example )
 
