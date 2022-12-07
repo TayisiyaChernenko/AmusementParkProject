@@ -42,23 +42,12 @@
                 {% for vendor in output%}
                 <tr>
                     <details>
-                        <summary>{{vendor[0]}} at park location: {{vendor[1]}}</summary>
-                        <!--This will display each vendor's info from database-->
-                            <table>
-                            <tr>
-                                <a href="{{vendor[0]}}Menu">
-                                    Menu for {{vendor[0]}}
-                                </a>
-                            </tr>
-
-                            <tr>
-                                Open now? {{vendor[2]}} 
-                            </tr>
-                        </table>
+                        <summary>{{vendor}}</summary>
+                         <!--This will display vendors somehow from database-->
                     </details>
                 </tr>
-                <p style="margin-bottom:.75cm;"></p>
-                {% endfor %} 
+                {% endfor %}
+              </details>
             </table>
             </div>
         </main>
@@ -95,8 +84,8 @@
             }
     
             .box {
-                width: 300px;
-                height: 400px;
+                width: 200px;
+                height: 350px;
                 border:1px solid red;
                 background-color:white;
                 box-shadow: 6px 10px 4px lightskyblue;
