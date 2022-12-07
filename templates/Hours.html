@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}" >
+        <meta charset="utf-8">
+        <meta name = "description" content = "This is a nifty website">
+        <title>Amusement Park App</title>
+    </head>
+    <body style = "background-color:#f4f0ec">
+        <body>
+            <div style="background-color: whitesmoke;">
+                <h1>Your Hours</h1>
+            </div>
+        </body>
+        <nav>
+            <ul>
+                <table>
+                    <tr>
+                        <a href="/">
+                            <button>Home</button>
+                        </a>
+                    </tr>
+                    <tr>
+                        <a href="/Vendors">
+                            <button>Vendors</button>
+                        </a>
+                    </tr>
+                    <tr>
+                        <a href="/Reservations">
+                            <button>Reservations</button>
+                        </a>
+                    </tr>
+                    <tr>
+                        <a href="/Rides">
+                            <button>Rides</button>
+                        </a>
+                    </tr>
+                </table>
+            </ul>
+        </nav>
+        <p style="margin-bottom:1.5cm;"></p>
+        <main>
+            <div class="box">
+                <table>
+                    <tr>
+                        <h2>Hours for {{total[0][2]}} {{total[0][1]}}</h2>
+                        {% for hour in hours %}
+                        <p>{{hour[1]}} from {{hour[2]}} to {{hour[3]}} in {{hour[4]}}</p>
+                        {% endfor %}
+						<p>total: {{total[0][3]}}</p>
+                    </tr>
+                </table>
+            </div>
+        </main>
+    </body>
+</html>
