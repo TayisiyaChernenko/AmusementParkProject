@@ -1,59 +1,10 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <meta charset="utf-8">
-      <title>Amusement Park App</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}" >
+        <meta charset="utf-8">
+        <title>Amusement Park App</title>
     </head>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            height: 100h;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-image: url("/static/pexels-athena-2977118.jpg");
-            background-size: cover;
-        }
-
-        button{
-            background-color:red ;
-            color: white;
-        }
-
-        .box{
-            width: 200px;
-            height: 350px;
-            border:1px solid red;
-            background-color:white;
-            box-shadow: 6px 10px 4px lightskyblue;
-        }
-
-        .borderbox{
-            background-color: red;
-            color: white;
-        }
-
-        #bottom {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-      }
-
-      footer{
-        height: 75h;
-        width: 100vw;
-      }
-
-
-    </style>
-
     <body style = "background-color:#f4f0ec">
         <body >
             <div style="background-color: whitesmoke;">
@@ -64,7 +15,7 @@
         <nav>
                 <table>
                 <tr>
-                    <a href="/index">
+                    <a href="/">
                         <button>Home</button>
                     </a>
                 </tr>
@@ -87,18 +38,50 @@
             <table>
                 <tr>
                     <details>
-                    <summary>Make A Reservation</summary>
-                    <!--This will drop down into the entry form for making reservations-->
+                        <summary>Make A Reservation</summary>
+                        <!--This will drop down into the entry form for making reservations-->
+                        <form action="/Reservations" method="post">
+                            <div>
+                                <p>Start</p>
+                                <input type="date" name="start date" required>
+                                <input type="time" name="start time" required>
+                            </div>
+                            <div>
+                                <p>End</p>
+                                <input type="date" name="end date" required>
+                                <input type="time" name="end time" required>
+                            </div>
+                            <div>
+                                <select name="section" required>
+                                    <option selected disabled hidden>section</option>
+                                    {% for section in sections %}
+                                    <option value="{{section}}">{{section}}</section></option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div>
+                                <p>Number of Guests</p>
+                                <input type="number" name="guests" required style="width: 3em;">
+                            </div>
+                            <div>
+                                <p>Your ID</p>
+                                <input type="number" name="gid" required style="width: 5em;">
+                            </div>
+                            <input type="submit">
+                        </form>
                     </details>
                 </tr>
                 <p style="margin-bottom:2.5cm;"></p>
                 <tr>
-                <details>
-                <summary>Check Reservations</summary>
-                <!--This will drop down into the entry form to enter reservation details-->
-            </details>
-        </tr>
-        </table>
+                    <details style="list-style: none;">
+                        <summary>Check Reservations</summary>
+                        <!--This will drop down into the entry form to enter reservation details-->
+                        {% for reservation in output %}
+                        <p>{{reservation[0]}} {{reservation[1]}} {{reservation[2]}} {{reservation[3]}} {{reservation[4]}}</p>
+                        {% endfor %}
+                    </details>
+                </tr>
+            </table>
         </div>
         </main>
         
