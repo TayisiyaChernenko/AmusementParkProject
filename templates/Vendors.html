@@ -6,60 +6,59 @@
         <title>Amusement Park App</title>
     </head>
     <body style = "background-color:#f4f0ec">
-        <body >
+        <body>
             <div style="background-color: whitesmoke;">
-            <h1>Vendors in the Amusement Park</h1>
-        </div>
+                <h1>Vendors in the Amusement Park</h1>
+            </div>
         </body>
         <nav>
             <ul>
                 <table>
-                <tr>
-                    <a href="/">
-                    <button>Home</button>
-                </a>
-                </tr>
-                <tr>
-                    <a href="/Rides">
-                        <button>Rides</button>
-                    </a>
-                </tr> 
-                <tr>
-                    <a href="/Reservations">
-                        <button>Reservations</button>
-                    </a>
-                </tr>
-            </table>
+                    <tr>
+                        <a href="/">
+                            <button>Home</button>
+                        </a>
+                    </tr>
+                    <tr>
+                        <a href="/Rides">
+                            <button>Rides</button>
+                        </a>
+                    </tr> 
+                    <tr>
+                        <a href="/Reservations">
+                            <button>Reservations</button>
+                        </a>
+                    </tr>
+                </table>
             </ul>
         </nav>
         <p style="margin-bottom:1.5cm;"></p>
         <main>
-        
             <div class="box">
-            <table>
-                <tr>
-                    <h2>Vendors</h2>
-                </tr>
-                {% for vendor in output%}
-                <tr>
-                    <details>
-                        <summary>{{vendor}}</summary>
-                         <!--This will display vendors somehow from database-->
-                    </details>
-                </tr>
-                {% endfor %}
-              </details>
-            </table>
+                <table>
+                    <tr>
+                        <h2>Vendors</h2>
+                    </tr>
+                    {% for vendor in output%}
+                    <tr>
+                        <details>
+                            <summary>{{vendor}}</summary>
+                            <!--This will display vendors somehow from database-->
+                        </details>
+                    </tr>
+                    {% endfor %}
+                </table>
             </div>
         </main>
-        
-        <footer>
+    </body>
+    <footer>
         <div id="bottom">
             <div class="borderbox">
-            <p>The vendors available at the park are subject to change, and supply of stock is not guaranteed. For refunds, cutsomers must 
-                present a proof of purchase in the form of a reciept of the same day.   </p>
+                <p>
+                    The vendors available at the park are subject to change, and supply of stock is not guaranteed. For refunds, cutsomers must 
+                    present a proof of purchase in the form of a reciept of the same day.
+                </p>
+            </div>
         </div>
-    </div>
-        </footer>
-
-  </html>
+    </footer>
+</html>
