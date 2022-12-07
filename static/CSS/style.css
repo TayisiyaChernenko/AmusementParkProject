@@ -1,63 +1,59 @@
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    height: 100h;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url("/static/pexels-athena-2977118.jpg");
-    background-size: cover;
+	height: 100h;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-image: url("/static/pexels-athena-2977118.jpg");
+	background-size: cover;
 }
 
 button{
-    background-color:red ;
-    color: white;
+	background-color:red ;
+	color: white;
 }
 
 .box{
-    width: 400px;
-    height: 350px;
-    border:1px solid red;
-    background-color:white;
-    box-shadow: 6px 10px 4px lightskyblue;
+	width: 400px;
+	height: 350px;
+	border:1px solid red;
+	background-color:white;
+	box-shadow: 6px 10px 4px lightskyblue;
 }
 
 .borderbox{
-    background-color: red;
-    color: white;
-    height: 3.5em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+	background-color: red;
+	color: white;
+	height: 3.5em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 }
 
 #bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 
 footer{
-    height: 75h;
-    width: 100vw;
+	height: 75h;
+	width: 100vw;
 }
 
 
 .borderbox{
-    background-color: red;
-    color: white;
-    height: 60px;
-    width: 1450px;
+	background-color: red;
+	color: white;
+	height: 60px;
+	width: 1450px;
 }
 
 .Welcome{
-    text-shadow: 2px 4px 4px white;
-}
-
-.error{
-    color: red;
+	text-shadow: 2px 4px 4px white;
 }
