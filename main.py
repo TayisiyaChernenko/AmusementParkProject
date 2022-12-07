@@ -1,6 +1,5 @@
 import pymysql
-from flask import Flask
-from flask import render_template
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -13,26 +12,43 @@ def Vendors():
 def index():
     return render_template('./index.html')
 
-@app.route('/Reservations/')
+@app.route('/Reservations/',methods = ['POST', 'GET'])
 def Reservations():
-    return render_template('./Reservations.html')
+    if request.method == 'POST':
+        print("'" + request.form['start date'] + " " + request.form['start time'] + ":00', '")
+        print("'" + request.form['end date'] + " " + request.form['end time'] + ":00', '")
+        print("'" + request.form['section'] + "', ")
+        print(request.form['guests'] + ", ")
+        print(request.form['gid'] + ")")
+        mysqlconnect("insert into reservation values('" 
+                        + request.form['start date'] + " " + request.form['start time'] + ":00', '"
+                        + request.form['end date'] + " " + request.form['end time'] + ":00', '"
+                        + request.form['section'] + "', "
+                        + request.form['guests'] + ", "
+                        + request.form['gid'] + ")")
+    sections = mysqlconnect("select sec_name from section")
+    sections = map(lambda n: n[0], sections)
+    output = mysqlconnect("select * from Reservation")
+    return render_template('./Reservations.html', output = output, sections = sections)
 
 @app.route('/Rides/')
 def Rides():
     return render_template('./Rides.html')
 
 def mysqlconnect(query):
+    print(query)
     # To connect MySQL database
     conn = pymysql.connect(
         host='localhost',
-        user='root', 
-        password = "Simba1026!",
+        user='server', 
+        password = "password",
         db='AMUSEMENT_PARK',
         )
       
     cur = conn.cursor()
  # Select query
     cur.execute(query)
+    conn.commit()
     output = cur.fetchall()
       
     for i in output:
