@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+  <html>
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}" >
         <meta charset="utf-8">
@@ -8,60 +8,56 @@
     </head>
     <body style = "background-color:#f4f0ec">
         <body>
-            <div style="background-color: whitesmoke;">
-                <h1>Rides of the Amusement Park</h1>
-            </div>
+        <div style="background-color: whitesmoke;">
+            <h1>Rides of the Amusement Park</h1>
+        </div>
         </body>
         <nav>
             <ul>
                 <table>
-                    <tr>
-                        <a href="/">
-                            <button>Home</button>
-                        </a>
-                    </tr>
-                    <tr>
-                        <a href="/Vendors">
-                            <button>Vendors</button>
-                        </a>
-                    </tr>
-                    <tr>
-                        <a href="/Reservations">
-                            <button>Reservations</button>
-                        </a>
-                    </tr>
-                    <tr>
-                        <a href="/Signin">
-                            <button>Employee Signin</button>
-                        </a>
-                    </tr>
-                </table>
+                <tr>
+                    <a href="/">
+                        <button>Home</button>
+                    </a>
+                </tr>
+                <tr>
+                    <a href="/Vendors">
+                        <button>Vendors</button>
+                    </a>
+                </tr>
+                <tr>
+                    <a href="/Reservations">
+                        <button>Reservations</button>
+                    </a>
+                </tr>
+            </table>
             </ul>
         </nav>
         <p style="margin-bottom:1.5cm;"></p>
         <main>
+        
             <div class="box">
-                <table>
-                    <tr>
-                        <h2>Rides</h2>
-                        <details>
-                            <summary>Show more</summary>
-                            <!--This will display vendors somehow from database-->
-                        </details>
-                    </tr>
-                </table>
-            </div>
+            <table>
+                <tr>
+                    <h2>Rides</h2>
+                    <details>
+                    <summary>Show more</summary>
+                    <!--This will display vendors somehow from database-->
+                    </details>
+                </tr>
+            </details>
+        </table>
+        </div>
         </main>
-    </body>
-    <footer>
+        
+        <footer>
         <div id="bottom">
             <div class="borderbox">
-                <p>
-                    To ride, customers must meet ride requirements. All rights to deny entry to a ride are reserved. The status of rides 
-                    offered at park are subject to change in the case of maintenence or dangerous weather conditions. Refunds shall not 
-                    be offered in the case of ride closure.
-                </p>
-            </div>
+            <p> To ride, customers must meet ride requirements. All rights to deny entry to a ride are reserved. The status of rides
+                 offered at park are subject to change in the case of maintenence or dangerous weather conditions. Refunds shall not 
+                 be offered in the case of ride closure.  </p>
         </div>
-    </footer>
-</html>
+    </div>
+        </footer>
+
+  </html>
