@@ -12,6 +12,26 @@ def Vendors():
 def index():
     return render_template('./index.html')
 
+@app.route('/Signin/', methods = ['POST', 'GET'])
+def Signin():
+    failed = False
+    if request.method == 'POST' :
+        employee = mysqlconnect("select * from employee where EID=" + request.form['EID'])
+        if len(employee) != 0 :
+            print("\n")
+            print(url_for('Hours', EID=request.form['EID'] ) )
+            print("\n")
+            return redirect(url_for('Hours', EID=request.form['EID'] ), code=302)
+        failed = True
+    return render_template('./Signin.html', failed = failed)
+
+@app.route('/Hours/')
+def Hours():
+    print(request)
+    hours = mysqlconnect("select * from work_hours where EID=" + request.args['EID'] )
+    total = mysqlconnect("select * from employee_hours where EID=" + request.args['EID'] )
+    return render_template('./Hours.html', hours = hours, total = total)
+
 @app.route('/Reservations/',methods = ['POST', 'GET'])
 def Reservations():
     if request.method == 'POST':
