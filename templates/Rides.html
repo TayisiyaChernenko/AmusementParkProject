@@ -41,19 +41,28 @@
         <p style="margin-bottom:1.5cm;"></p>
         <main>
         
-            <div class="box">
+        <div class="box">
             <table>
                 <tr>
                     <h2>Rides</h2>
-                    <details>
-                    <summary>Show more</summary>
-                    <!--This will display vendors somehow from database-->
-                    </details>
                 </tr>
-            </details>
-        </table>
+                {% for ride in output%}
+                <tr>
+                    <p>{{ride[0]}}</p>
+                </tr>
+                {% endfor %}
+            </table>
+            <p style="margin-bottom:1cm;"></p>
+            <b> See more information on a specific Ride</b>
+            <form action=" = /Rides" method="post">
+                <div>
+                    <p>Ride Name</p>
+                    <input type = "text" name = "name" required>
+                </div>
+            </form>
         </div>
-        </main>
+        
+    </main>
         
         <footer>
         <div id="bottom">
