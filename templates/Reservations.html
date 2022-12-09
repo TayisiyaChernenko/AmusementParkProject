@@ -82,7 +82,8 @@
                         <summary>Check Reservations</summary>
                         <!--This will drop down into the entry form to enter reservation details-->
                         {% for reservation in output %}
-                        <p>{{reservation[0]}} {{reservation[1]}} {{reservation[2]}} {{reservation[3]}} {{reservation[4]}}</p>
+                        <p> <b>Starts at :</b> {{reservation[0]}}, <b>Ends at:</b> {{reservation[1]}} <b>Location : </b> {{reservation[2]}} 
+                        <b>For </b> {{reservation[3]}} <b>guests.</b> <b>Reserved by guest : </b>{{reservation[4]}}</p>
                         {% endfor %}
                     </details>
                 </tr>
