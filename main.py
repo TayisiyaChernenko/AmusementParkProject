@@ -7,8 +7,9 @@ app = Flask(__name__)
 def Vendors():
     if request.method == 'POST':
         print(request.form)
+        sql_parameterized_query = """ select * from Menu,Vendor where Menu.VID = Vendor.VID and Vendor.Vname= %s"""
         output = mysqlconnect("select Vname,Sec_name from Vendor")
-        extraInfo = mysqlconnect("select * from Menu,Vendor where Menu.VID = Vendor.VID and Vendor.Vname='" + request.form['Vendor name'] + "'")
+        extraInfo = preparedQuery(sql_parameterized_query = sql_parameterized_query,formresult=request.form['Vendor name'] )
         return render_template('./Vendors.html', output = output, extraInfo = extraInfo)
     output = mysqlconnect("select Vname,Sec_name,Availability from Vendor")
     return render_template('./Vendors.html',output = output,extraInfo = None)
@@ -87,6 +88,21 @@ def mysqlconnect(query):
     # To close the connection
     conn.close()
     return output
+
+def preparedQuery(sql_parameterized_query, formresult):
+    conn = pymysql.connect(
+        host='localhost',
+        user='server', 
+        password = "password",
+        db='AMUSEMENT_PARK',
+        )
+    # this will retun MySQLCursorPrepared object
+    cursor = conn.cursor()
+    #this will execute the prepared method 
+    cursor.execute(sql_parameterized_query, formresult)
+    #this will return the rows of the query output
+    result = cursor.fetchall()
+    return result
 
 
 if __name__ == "__main__":
