@@ -3,10 +3,16 @@ from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
-@app.route('/Vendors/')
+@app.route('/Vendors/', methods = ['POST', 'GET'])
 def Vendors():
+    if request.method == 'POST':
+        print(request.form)
+        sql_parameterized_query = """ select * from Menu,Vendor where Menu.VID = Vendor.VID and Vendor.Vname= %s"""
+        output = mysqlconnect("select Vname,Sec_name from Vendor")
+        extraInfo = preparedQuery(sql_parameterized_query = sql_parameterized_query,formresult=request.form['Vendor name'] )
+        return render_template('./Vendors.html', output = output, extraInfo = extraInfo)
     output = mysqlconnect("select Vname,Sec_name,Availability from Vendor")
-    return render_template('./Vendors.html',output = output)
+    return render_template('./Vendors.html',output = output,extraInfo = None)
   
 @app.route('/')
 def index():
@@ -54,11 +60,11 @@ def Reservations():
 @app.route('/Rides/', methods = ['POST', 'GET'])
 def Rides():
     output = mysqlconnect("select Name, SEC_TO_TIME(duration * Line_length / Capacity) from Ride")
+    extraInfo = None
     if request.method == 'POST':
         print(request.form)
         extraInfo = mysqlconnect("select * from Ride where Name='" + request.form['name'] + "'")
-        return render_template('./Rides.html', output = output, extraInfo = extraInfo)
-    return render_template('./Rides.html', output = output, extraInfo = None)
+    return render_template('./Rides.html', output = output, extraInfo = extraInfo)
 
 def mysqlconnect(query):
     print(query)
@@ -82,8 +88,22 @@ def mysqlconnect(query):
     conn.close()
     return output
 
+def preparedQuery(sql_parameterized_query, formresult):
+    conn = pymysql.connect(
+        host='localhost',
+        user='server', 
+        password = "password",
+        db='AMUSEMENT_PARK',
+        )
+    # this will retun MySQLCursorPrepared object
+    cursor = conn.cursor()
+    #this will execute the prepared method 
+    cursor.execute(sql_parameterized_query, formresult)
+    #this will return the rows of the query output
+    result = cursor.fetchall()
+    return result
+
 
 if __name__ == "__main__":
-    mysqlconnect('select Vname,Sec_name from Vendor')
     app.run
     
