@@ -3,10 +3,15 @@ from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
-@app.route('/Vendors/')
+@app.route('/Vendors/', methods = ['POST', 'GET'])
 def Vendors():
+    if request.method == 'POST':
+        print(request.form)
+        output = mysqlconnect("select Vname,Sec_name from Vendor")
+        extraInfo = mysqlconnect("select * from Menu,Vendor where Menu.VID = Vendor.VID and Vendor.Vname='" + request.form['Vendor name'] + "'")
+        return render_template('./Vendors.html', output = output, extraInfo = extraInfo)
     output = mysqlconnect("select Vname,Sec_name,Availability from Vendor")
-    return render_template('./Vendors.html',output = output)
+    return render_template('./Vendors.html',output = output,extraInfo = None)
   
 @app.route('/')
 def index():
