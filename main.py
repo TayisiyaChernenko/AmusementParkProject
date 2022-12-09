@@ -5,13 +5,26 @@ app = Flask(__name__)
 
 @app.route('/Vendors/', methods = ['POST', 'GET'])
 def Vendors():
+    output = mysqlconnect("select Vname,Sec_name from Vendor")
     if request.method == 'POST':
-        print(request.form)
-        sql_parameterized_query = """ select * from Menu,Vendor where Menu.VID = Vendor.VID and Vendor.Vname= %s"""
-        output = mysqlconnect("select Vname,Sec_name from Vendor")
-        extraInfo = preparedQuery(sql_parameterized_query = sql_parameterized_query,formresult=request.form['Vendor name'] )
-        return render_template('./Vendors.html', output = output, extraInfo = extraInfo)
-    output = mysqlconnect("select Vname,Sec_name,Availability from Vendor")
+        # try catch to avoid field mismatch crashing executor
+        try:
+            if(request.form['Vendor name'] is not None):
+                sql_parameterized_query = """ select * from Menu,Vendor where Menu.VID = Vendor.VID and Vendor.Vname= %s"""
+                extraInfo = preparedQuery(sql_parameterized_query = sql_parameterized_query,formresult=request.form['Vendor name'] )
+                by = 0
+                return render_template('./Vendors.html', output = output, extraInfo = extraInfo, by = by)
+        except: 
+            pass
+        try:
+            if(request.form['Item'] is not None):
+                sql_parameterized_query = """ select Item,Cost,Vname,Sec_name,Availability from Menu,Vendor where Menu.VID = Vendor.VID and Menu.Item= %s"""
+                extraInfo = preparedQuery(sql_parameterized_query = sql_parameterized_query,formresult=request.form['Item'] )
+                by = 1 
+                print(extraInfo)
+                return render_template('./Vendors.html', output = output, extraInfo = extraInfo, by = by)
+        except:
+            pass
     return render_template('./Vendors.html',output = output,extraInfo = None)
   
 @app.route('/')
