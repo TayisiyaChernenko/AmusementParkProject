@@ -47,15 +47,35 @@
                 </tr>
                 {% for vendor in output%}
                 <tr>
-                    <details>
-                        <summary>{{vendor}}</summary>
-                         <!--This will display vendors somehow from database-->
-                    </details>
+                    
+                <p>{{vendor[0]}} at {{vendor[1]}}</p>
                 </tr>
                 {% endfor %}
-              </details>
             </table>
+            
+            <p style="margin-bottom:1cm;"></p>
+            <b> See a specific Vendor's Menu</b>
+
+            <form action="" method="post">
+                <div>
+                    <p>Menu</p>
+                    <input type = "text" name = "Vendor name" required>
+                </div>
+            </form>
+            <div>
+                {%if extraInfo %}
+                <p><b>Menu for {{extraInfo[0][4]}}</b></p>
+                <table>
+                    {% for i in extraInfo%}
+                    <tr>
+                        <p>{{i[0]}} Cost : {{i[2]}} Available Now: {{i[5]}} At Location {{i[6]}}</p>
+                    </tr>
+                    {% endfor %}
+                </table> 
+                {% endif %}
             </div>
+        </div>
+
         </main>
         
         <footer>
