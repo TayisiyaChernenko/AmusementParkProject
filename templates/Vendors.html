@@ -54,24 +54,45 @@
             </table>
             
             <p style="margin-bottom:1cm;"></p>
-            <b> See a specific Vendor's Menu</b>
 
             <form action="" method="post">
-                <div>
-                    <p>Menu</p>
-                    <input type = "text" name = "Vendor name" required>
-                </div>
+                <b> See a specific Vendor's Menu</b>
+                <select name="Vendor name" required>
+                {% for vendor in output%} 
+                <option value="{{vendor[0]}}">{{vendor[0]}} at {{vendor[1]}}</option>
+                {% endfor %}
+                </select>
+                <input type="submit" value="Submit" />
+
             </form>
+
+            <form action="" method="post">
+                <b> See which Vendors have an item you want</b>
+                <input type="text" name="Item" required>
+                <input type="submit" value="Submit" />
+            </form>
+
             <div>
                 {%if extraInfo %}
-                <p><b>Menu for {{extraInfo[0][4]}}</b></p>
-                <table>
-                    {% for i in extraInfo%}
-                    <tr>
-                        <p>{{i[0]}} Cost : {{i[2]}} Available Now: {{i[5]}} At Location {{i[6]}}</p>
-                    </tr>
-                    {% endfor %}
-                </table> 
+                    {%if by == 0 %}
+                        <p><b>Menu for {{extraInfo[0][4]}}</b></p>
+                        <table>
+                        {% for i in extraInfo%}
+                        <tr>
+                            <p>{{i[0]}} Cost : {{i[2]}} Available Now: {{i[5]}} At Location {{i[6]}}</p>
+                        </tr>
+                        {% endfor %}
+                    </table> 
+                    {% else %}
+                    <p><b>The item is sold at these locatons</b></p>
+                    <table>
+                        {% for i in extraInfo%}
+                        <tr>
+                            <p>{{i[0]}} Sold at {{i[2]}} in {{i[3]}} Cost : {{i[1]}} Available Now: {{i[4]}}</p>
+                        </tr>
+                        {% endfor %}
+                    </table> 
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

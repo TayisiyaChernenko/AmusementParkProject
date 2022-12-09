@@ -54,11 +54,15 @@
             </table>
             <p style="margin-bottom:1cm;"></p>
             <b> See more information on a specific Ride</b>
+            
             <form action="" method="post">
-                <div>
-                    <p>Ride Name</p>
-                    <input type = "text" name = "name" required>
-                </div>
+                <select name="name" required>
+                {% for ride in output%} 
+                <option value="{{ride[0]}}">{{ride[0]}}</option>
+                {% endfor %}
+                </select>
+                <input type="submit" value="Submit" />
+
             </form>
             <div>
                 {%if extraInfo%}
