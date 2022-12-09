@@ -59,7 +59,7 @@ def Reservations():
 
 @app.route('/Rides/', methods = ['POST', 'GET'])
 def Rides():
-    output = mysqlconnect("select Name, SEC_TO_TIME(duration * Line_length / Capacity) from Ride")
+    output = mysqlconnect("select Name, SEC_TO_TIME(duration * CEILING(Line_length / Capacity)) from Ride")
     extraInfo = None
     if request.method == 'POST':
         print(request.form)
