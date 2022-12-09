@@ -53,7 +53,13 @@ def Reservations():
 
 @app.route('/Rides/')
 def Rides():
-    return render_template('./Rides.html')
+    if request.method == 'POST':
+        print(request.form)
+        output = mysqlconnect("select Name, SEC_TO_TIME(duration * Line_length / Capacity) from Ride")
+        extraInfo = mysqlconnect("select * from Ride where Name='" + request.form['name'] + "'")
+        return render_template('./Rides.html', output = output, extraInfo = extraInfo)
+    output = mysqlconnect("select Name from Ride")
+    return render_template('./Rides.html', output = output, extraInfo = None)
 
 def mysqlconnect(query):
     print(query)

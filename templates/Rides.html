@@ -50,8 +50,56 @@
                     <!--This will display vendors somehow from database-->
                     </details>
                 </tr>
-            </details>
-        </table>
+                {% for ride in output%}
+                <tr>
+                    <p>{{ride[0]}} Wait time: {{ride[1]}}</p>
+                </tr>
+                {% endfor %}
+            </table>
+            <p style="margin-bottom:1cm;"></p>
+            <b> See more information on a specific Ride</b>
+            <form action="" method="post">
+                <div>
+                    <p>Ride Name</p>
+                    <input type = "text" name = "name" required>
+                </div>
+            </form>
+            <div>
+                {%if extraInfo%}
+                <table>
+                    <tr>
+                        <p>Ride : {{extraInfo[0][1]}}</p>
+                    </tr>
+                    <tr>
+                        <p>Type : {{extraInfo[0][2]}}</p>
+                    </tr>
+                    <tr>
+                        <p> Availabe Now : {{extraInfo[0][3]}}</p>
+                    </tr>
+                    <tr>
+                        <p>Capacity : {{extraInfo[0][4]}}</p>
+                    </tr>
+                    <tr>
+                        <p> Location : {{extraInfo[0][5]}}</p>
+                    </tr>
+                    <tr>
+                        <p>Duration of ride : {{extraInfo[0][6]}}</p>
+                    </tr>
+                    <tr>
+                        <p>Age Requirement to ride : {{extraInfo[0][7]}}</p>
+                    </tr>
+                    <tr>
+                        <p>Height Requirement to ride : {{extraInfo[0][8]}}</p>
+                    </tr>
+                    <tr>
+                        <p>Weight Requirement to ride : {{extraInfo[0][9]}}</p>
+                    </tr>
+                    <tr>
+                        <p>Expected line length right now : {{extraInfo[0][10]}} people waiting</p>
+                    </tr>
+                </table> 
+                {%endif%}
+            </div>
         </div>
         </main>
         
