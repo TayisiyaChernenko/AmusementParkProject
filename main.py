@@ -54,8 +54,9 @@ def Reservations():
 @app.route('/Rides/', methods = ['POST', 'GET'])
 def Rides():
     if request.method == 'POST':
+        print(request.form)
         output = mysqlconnect("select Name from Ride")
-        extraInfo = mysqlconnect("select * from Ride where Name=' " + request.form['name'] + "'")
+        extraInfo = mysqlconnect("select * from Ride where Name='" + request.form['name'] + "'")
         return render_template('./Rides.html', output = output, extraInfo = extraInfo)
     output = mysqlconnect("select Name from Ride")
     return render_template('./Rides.html', output = output, extraInfo = None)
@@ -84,6 +85,5 @@ def mysqlconnect(query):
 
 
 if __name__ == "__main__":
-    mysqlconnect("select * from Ride where Name='Texas Twister'")
     app.run
     
